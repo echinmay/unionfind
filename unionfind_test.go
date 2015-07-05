@@ -2,7 +2,6 @@ package unionfind
 
 import (
 	"testing"
-
 )
 
 func TestNewUnionFind(t *testing.T) {
@@ -24,7 +23,6 @@ func TestUnion(t *testing.T) {
 	uf = New(9)
 	uf.Union(3, 4)
 	uf.Union(1, 3)
-
 
 }
 
@@ -49,7 +47,13 @@ func TestConnected(t *testing.T) {
 	}
 }
 
-
+func TestCount(t *testing.T) {
+	uf := New(3)
+	uf.Union(1, 2)
+	if uf.GetNumClusters() != 2 {
+		t.Error("Gave a wrong number of clusters", uf.GetNumClusters())
+	}
+}
 
 func slicesEqual(xs, ys []int) bool {
 	for i, x := range xs {

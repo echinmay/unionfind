@@ -1,4 +1,4 @@
-# golangunionfind
+# unionfind
 A sample implementation of union find in golang
 
 Unionfind implements one path variant of the path compression union find algorithm.

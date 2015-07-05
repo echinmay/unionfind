@@ -53,7 +53,11 @@ func (ufd UnionFind) Connected(p, q int) bool {
 
 }
 
-func (ufd UnionFind) Union(p, q int) {
+func (ufd UnionFind) GetNumClusters() int {
+	return ufd.count
+}
+
+func (ufd *UnionFind) Union(p, q int) {
 	if !ufd.validate(p) || !ufd.validate(q) {
 		return
 	}
