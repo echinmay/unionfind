@@ -15,6 +15,7 @@ type UnionFind struct {
 
 // New initializes a new UnionFind struct and returns a pointer.
 func New(count int) *UnionFind {
+
 	id := make([]int, count)
 	for i := 0; i < count; i++ {
 		id[i] = i
@@ -44,9 +45,9 @@ func (ufd UnionFind) getroot(i int) int {
 }
 
 func (ufd UnionFind) Connected(p, q int) bool {
-	if ufd.validate(p) && ufd.validate(q) {
-		proot := ufd.getroot(p)
-		qroot := ufd.getroot(q)
+	if ufd.validate(p-1) && ufd.validate(q-1) {
+		proot := ufd.getroot(p-1)
+		qroot := ufd.getroot(q-1)
 		return proot == qroot
 	}
 	return false
@@ -58,12 +59,12 @@ func (ufd UnionFind) GetNumClusters() int {
 }
 
 func (ufd *UnionFind) Union(p, q int) {
-	if !ufd.validate(p) || !ufd.validate(q) {
+	if !ufd.validate(p-1) || !ufd.validate(q-1) {
 		return
 	}
 
-	proot := ufd.getroot(p)
-	qroot := ufd.getroot(q)
+	proot := ufd.getroot(p-1)
+	qroot := ufd.getroot(q-1)
 
 	if proot == qroot {
 		// Already coonected. Nothing left to do.
